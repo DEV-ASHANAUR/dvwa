@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvwa
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dvwa
+  template:
+    metadata:
+      labels:
+        app: dvwa
+    spec:
+      hostNetwork: true
+      hostPID: true
+      hostIPC: true
+      containers:
+        - name: dvwa
+          image: python:3.6.15
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+            runAsUser: 0
+            readOnlyRootFilesystem: false
+            capabilities:
+              add:
+                - SYS_ADMIN
+                - NET_ADMIN
+          ports:
+            - containerPort: 80
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              value: "AKIAB4FK9N25UTUYJNII"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "AFV3roV8WhaayMwXwawSwBWIn4m0r6LzYuUnxHaa"
+            - name: DATABASE_URL
+              value: "postgres://dvwa_user:mrm0LKlqkCWepPnhgx9bKjq9@db.internal:5432/dvwa"
+            - name: MONGODB_URI
+              value: "mongodb://dvwa_admin:NkivMoBNM32O2dGf6OqLHhmx@mongo.internal:27017/dvwa?authSource=admin"

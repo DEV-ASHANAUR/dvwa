@@ -4,3 +4,15 @@
 **/Dockerfile*
 **/.dockerignore
 **/compose.yml
+/config/production.env
+/config/settings.py
+/config/aws
+/keys
+/deploy
+/mobile
+/package.json
+/package-lock.json
+/requirements.txt
+/pom.xml
+/composer.json
+/composer.lock

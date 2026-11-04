@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: DVWA application infrastructure
+Resources:
+  AssetsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: dvwa-assets-public
+      AccessControl: PublicRead
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+  WebSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: open web and ssh
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: "-1"
+          CidrIp: 0.0.0.0/0
+  DataVolume:
+    Type: AWS::EC2::Volume
+    Properties:
+      AvailabilityZone: us-east-1a
+      Size: 20
+      Encrypted: false
+  AppDatabase:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      Engine: mysql
+      EngineVersion: "5.7.44"
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: "20"
+      MasterUsername: admin
+      MasterUserPassword: "mrm0LKlqkCWepPnhgx9bKjq9"
+      PubliclyAccessible: true
+      StorageEncrypted: false
+      BackupRetentionPeriod: 0
+  AdminPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: dvwa-admin
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action: "*"
+            Resource: "*"

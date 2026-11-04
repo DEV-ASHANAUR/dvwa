@@ -1,0 +1,11 @@
+{
+  "name": "dvwa/services",
+  "require": {
+    "php": ">=7.2",
+    "guzzlehttp/guzzle": "6.5.0",
+    "monolog/monolog": "1.23.0",
+    "phpmailer/phpmailer": "6.0.0",
+    "symfony/http-foundation": "4.4.0",
+    "twig/twig": "2.4.0"
+  }
+}
