@@ -40,7 +40,7 @@ Este archivo está disponible en varios idiomas:
 - Turco: [Türkçe](README.tr.md)
 
 
-jfherjhfkjdngkdfngjkdfnk
+hello
 
 Si desea contribuir con una traducción, envíe una PR (Pull Request). Tenga en cuenta, sin embargo, que esto no significa que sólo tiene que usar Google Translate y enviar el resultado de traducción de la herramienta, pues será rechazado. Envíe su versión traducida añadiendo un nuevo archivo 'README.xx.md' donde xx es el código de dos letras del idioma deseado (basado en [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)).
 
